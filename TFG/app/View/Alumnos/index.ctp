@@ -4,14 +4,20 @@
 
 <?php 
 	$userData = $this->Session->read('userData');
-	//echo 'tipoUsuario:' . $userData[0]['Alumno']['tipoUsuario'] . ' ' . $Session->read ( 'Auth.User.username' );
-
+	echo 'tipoUsuario:' . $userData[0]['Alumno']['tipoUsuario'];
+	?>
+	</br></br>
+	<?php
 	if( $userData[0]['Alumno']['tipoUsuario'] == 'admin'){
 		
 		echo $this->Html->link("Dar de alta a profesor",array('controller' => 'Profesores', 'action' => 'add'));
 		?></br>
 
 		<?php
-		echo $this->Html->link("Dar de alta asignatura",array('controller' => 'Asignaturas', 'action' => 'add'));		
+		echo $this->Html->link("Dar de alta asignatura",array('controller' => 'Asignaturas', 'action' => 'add'));
+		?></br>
+		<?php
+		echo $this->Html->link("Gestionar tutorias",array('controller' => 'Tutorias', 'action' => 'index'));		
+		
 	}
 ?>
