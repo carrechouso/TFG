@@ -21,13 +21,13 @@
 
 				if($prof == 1 && $asig == 1){
 			 		if($this->Tutoria->validates()){
-			 			$data = array('asignatura_id' => $this->request->data['Tutoria']['asignatura_id'], 'profesor_id' => $this->request->data['Tutoria']['profesor_id'], 'dia' => $this->request->data['Tutoria']['dia'], 'despacho' => $this->request->data['Tutoria']['despacho'], 'hora_inicio' => $this->request->data['Tutoria']['hora_inicio']['hour'], 'hora_fin' => $this->request->data['Tutoria']['hora_fin']['hour'], 'minuto_inicio' => $this->request->data['Tutoria']['minuto_inicio']['min'], 'minuto_fin' => $this->request->data['Tutoria']['minuto_fin']['min']);
-			 			
-			 			$this->Tutoria->save($data);
+
+			 			$save = array('asignatura_id' => $this->request->data['Tutoria']['asignatura_id'], 'profesor_id' => $this->request->data['Tutoria']['profesor_id'], 'dia' => $this->request->data['Tutoria']['dia'], 'despacho' => $this->request->data['Tutoria']['despacho'], 'hora_inicio' => $this->request->data['Tutoria']['hora_inicio']['hour'], 'hora_fin' => $this->request->data['Tutoria']['hora_fin']['hour'], 'minuto_inicio' => $this->request->data['Tutoria']['minuto_inicio']['min'], 'minuto_fin' => $this->request->data['Tutoria']['minuto_fin']['min']);
+			 			//print_r($save);
+			 			$this->Tutoria->save($save);
 	 					$data = $this->Tutoria->find('all');
 						$this->set('tutorias', $data);
 	 					$this->Flash->success('Tutoria registrada correctamente');
-						print_r($this->request->data);
 						return $this->redirect(array('controller' => 'Tutorias', 'action' => 'index'));
 			 		}
 		 		}else{

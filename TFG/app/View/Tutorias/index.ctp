@@ -2,16 +2,40 @@
 
 <ul>
 	<?php
-	foreach ($tutorias as $valor) {?>
-		<li> <?php echo $valor['Tutoria']['asignatura_id']; ?></li>
-	<?php }
-	?>
-</ul>
-</br>
-</br>
-</br>
-</br>
+	
+	$userData = $this->Session->read('userData');
+	$userType = $this->Session->read('userType');
+	//print_r($tutorias);
+	foreach ($tutorias as $valor) {
+		$min_inicio = $valor['Tutoria']['minuto_inicio'];
+		$min_fin = $valor['Tutoria']['minuto_fin'];
+	
+		if($min_inicio == '0')
+			$min_inicio = '00';
+		
+		if($min_fin == '0')
+			$min_fin = '00';
 
-<?php
+		if( $userType == 'profesor' ){
+			if($valor['Tutoria']['profesor_id'] == $userData[0]['Profesor']['id']){
+			?>
+				<li> <?php echo $valor['Asignatura']['nombreA'] . ' ' .$valor['Profesor']['nombreP'] . ' ' .$valor['Profesor']['apellidosP'] . ' ' . $valor['Tutoria']['dia'] . ' de ' . $valor['Tutoria']['hora_inicio']. ':' . $min_inicio. ' a ' . $valor['Tutoria']['hora_fin']. ':' . $min_fin; ?></li>
+				<?php 
+			}
+		}else if( $userType == 'admin' ){
+			?>
+			<li> <?php echo $valor['Asignatura']['nombreA'] . ' ' .$valor['Profesor']['nombreP'] . ' ' .$valor['Profesor']['apellidosP'] . ' ' . $valor['Tutoria']['dia'] . ' de ' . $valor['Tutoria']['hora_inicio']. ':' . $min_inicio. ' a ' . $valor['Tutoria']['hora_fin']. ':' . $min_fin; ?></li>
+			<?php 
+		}
+	}
+	?>
+	</ul>
+	</br>
+	</br>
+	</br>
+	</br>
+
+	<?php
 		echo $this->Html->link("Dar de alta tutoría",array('controller' => 'Tutorias', 'action' => 'add'));
-		?></br>
+		?>
+	</br>

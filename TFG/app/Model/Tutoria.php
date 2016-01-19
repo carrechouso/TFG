@@ -46,5 +46,22 @@
 				)
 			)
 		);
+		
+		
+		 public $belongsTo = array(
+        	'Profesor' => array(
+            	'className' => 'Profesor',
+            	'foreignKey' => 'profesor_id'
+        	),
+        	'Asignatura' => array(
+            	'className' => 'Asignatura',
+            	'foreignKey' => 'asignatura_id'
+        	)
+    	);
+
+		/*public function getTutorias(){
+
+			$this->Tutoria('Profesor');
+		}*/
 	}
 ?>

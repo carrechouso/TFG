@@ -4,11 +4,12 @@
 
 <?php 
 	$userData = $this->Session->read('userData');
-	echo 'tipoUsuario:' . $userData[0]['Alumno']['tipoUsuario'];
+	$userType = $this->Session->read('userType');
+	echo 'tipoUsuario:' . $userType;
 	?>
 	</br></br>
 	<?php
-	if( $userData[0]['Alumno']['tipoUsuario'] == 'admin'){
+	if( $userType == 'admin'){
 		
 		echo $this->Html->link("Dar de alta a profesor",array('controller' => 'Profesores', 'action' => 'add'));
 		?></br>
