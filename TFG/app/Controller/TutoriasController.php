@@ -35,5 +35,11 @@
 		 		}
 		 	}
 		 }
+
+		 public function change(){
+		 	if($this->request->is('post')){
+		 		print_r($this->request->data);
+		 	}
+		 }
 	}
 ?>

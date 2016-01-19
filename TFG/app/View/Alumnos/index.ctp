@@ -18,7 +18,6 @@
 		echo $this->Html->link("Dar de alta asignatura",array('controller' => 'Asignaturas', 'action' => 'add'));
 		?></br>
 		<?php
-		echo $this->Html->link("Gestionar tutorias",array('controller' => 'Tutorias', 'action' => 'index'));		
-		
+		echo $this->Html->link("Lista de tutorias",array('controller' => 'Tutorias', 'action' => 'index'));
 	}
 ?>

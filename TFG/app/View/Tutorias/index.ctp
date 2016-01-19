@@ -19,12 +19,22 @@
 		if( $userType == 'profesor' ){
 			if($valor['Tutoria']['profesor_id'] == $userData[0]['Profesor']['id']){
 			?>
-				<li> <?php echo $valor['Asignatura']['nombreA'] . ' ' .$valor['Profesor']['nombreP'] . ' ' .$valor['Profesor']['apellidosP'] . ' ' . $valor['Tutoria']['dia'] . ' de ' . $valor['Tutoria']['hora_inicio']. ':' . $min_inicio. ' a ' . $valor['Tutoria']['hora_fin']. ':' . $min_fin; ?></li>
+				<li> <?php echo $valor['Asignatura']['nombreA'] . ' ' .$valor['Profesor']['nombreP'] . ' ' .$valor['Profesor']['apellidosP'] . ' ' . $valor['Tutoria']['dia'] . ' de ' . $valor['Tutoria']['hora_inicio']. ':' . $min_inicio. ' a ' . $valor['Tutoria']['hora_fin']. ':' . $min_fin. '  '; 
+					echo $this->Form->create('Tutoria',array('url' => array('controller' => 'tutorias', 'action' => 'change')));
+				    echo $this->Form->input('tutoria',array('type'=>'hidden','value' => $valor['Tutoria']['id']));
+					echo $this->Form->end('cambio puntual');
+					?>
+				</li>
 				<?php 
 			}
 		}else if( $userType == 'admin' ){
 			?>
-			<li> <?php echo $valor['Asignatura']['nombreA'] . ' ' .$valor['Profesor']['nombreP'] . ' ' .$valor['Profesor']['apellidosP'] . ' ' . $valor['Tutoria']['dia'] . ' de ' . $valor['Tutoria']['hora_inicio']. ':' . $min_inicio. ' a ' . $valor['Tutoria']['hora_fin']. ':' . $min_fin; ?></li>
+			<li> <?php echo $valor['Asignatura']['nombreA'] . ' ' .$valor['Profesor']['nombreP'] . ' ' .$valor['Profesor']['apellidosP'] . ' ' . $valor['Tutoria']['dia'] . ' de ' . $valor['Tutoria']['hora_inicio']. ':' . $min_inicio. ' a ' . $valor['Tutoria']['hora_fin']. ':' . $min_fin. '  '; 
+					echo $this->Form->create('Tutoria',array('url' => array('controller' => 'tutorias', 'action' => 'change')));
+				    echo $this->Form->input('tutoria',array('type'=>'hidden','value' => $valor['Tutoria']['id']));
+					echo $this->Form->end('cambio puntual');
+					?>
+				</li>
 			<?php 
 		}
 	}
