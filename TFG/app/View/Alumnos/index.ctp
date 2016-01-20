@@ -19,5 +19,13 @@
 		?></br>
 		<?php
 		echo $this->Html->link("Lista de tutorias",array('controller' => 'Tutorias', 'action' => 'index'));
+		?></br>
+		<!--<?php
+		//echo $this->Html->link("Resgistrarse en asignatura",array('controller' => 'imparten', 'action' => 'add'));
+		?></br>-->
+		<?php
+			echo $this->Html->link("Asignaturas  y profesores",array('controller' => 'imparten', 'action' => 'index'));
+	
 	}
 ?>
+

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-01-2016 a las 17:19:42
+-- Tiempo de generación: 20-01-2016 a las 22:15:36
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -41,7 +41,6 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
 
 INSERT INTO `alumnos` (`id`, `nombreAl`, `apellidosAl`, `passAl`, `usuarioAl`, `tipoUsuario`) VALUES
 (9, 'a', 'a', 'a2', 'a', 'alumno'),
-(10, 'b', 'b', 'b', 'b', 'alumno'),
 (11, 'c', 'c', 'c', 'c', 'admin'),
 (12, 'n', 'n', 'n', 'n', 'alumno');
 
@@ -70,6 +69,33 @@ INSERT INTO `asignaturas` (`id`, `nombreA`, `creditos`, `cuatrimestre`, `codigoA
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `camb_puntuales`
+--
+
+CREATE TABLE IF NOT EXISTS `camb_puntuales` (
+  `id` int(10) unsigned NOT NULL,
+  `tutoria_id` int(10) unsigned DEFAULT NULL,
+  `profesor_id` int(10) unsigned DEFAULT NULL,
+  `dia` date DEFAULT NULL,
+  `hora_inicio` int(11) DEFAULT NULL,
+  `hora_fin` int(11) DEFAULT NULL,
+  `despacho` int(10) DEFAULT NULL,
+  `minuto_inicio` int(11) NOT NULL,
+  `minuto_fin` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `camb_puntuales`
+--
+
+INSERT INTO `camb_puntuales` (`id`, `tutoria_id`, `profesor_id`, `dia`, `hora_inicio`, `hora_fin`, `despacho`, `minuto_inicio`, `minuto_fin`) VALUES
+(24, 3, 7, '2016-01-15', 10, 12, 2, 0, 0),
+(25, 3, 7, '0000-00-00', 10, 12, 2, 0, 0),
+(26, 5, 8, '2016-01-14', 10, 12, 12, 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `imparten`
 --
 
@@ -77,7 +103,15 @@ CREATE TABLE IF NOT EXISTS `imparten` (
   `id` int(10) unsigned NOT NULL,
   `asignatura_id` int(10) unsigned DEFAULT NULL,
   `profesor_id` int(10) unsigned DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `imparten`
+--
+
+INSERT INTO `imparten` (`id`, `asignatura_id`, `profesor_id`) VALUES
+(2, 2, 8),
+(3, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -92,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `profesores` (
   `tipoUsuario` enum('admin','alumno','profesor','') NOT NULL,
   `usuarioP` varchar(50) NOT NULL,
   `passP` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `profesores`
@@ -100,7 +134,8 @@ CREATE TABLE IF NOT EXISTS `profesores` (
 
 INSERT INTO `profesores` (`id`, `nombreP`, `apellidosP`, `tipoUsuario`, `usuarioP`, `passP`) VALUES
 (7, 'miguel ', 'reboiro jato', 'profesor', 'jato', 'jato'),
-(8, 'daniel', 'gonzalez peÃ±a', 'profesor', 'dani', 'dani');
+(8, 'daniel', 'gonzalez peÃ±a', 'profesor', 'dani', 'dani'),
+(9, 'b', 'b', 'profesor', 'b', 'b');
 
 -- --------------------------------------------------------
 
@@ -158,6 +193,12 @@ ALTER TABLE `asignaturas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `camb_puntuales`
+--
+ALTER TABLE `camb_puntuales`
+  ADD PRIMARY KEY (`id`), ADD KEY `tutoria_id` (`tutoria_id`), ADD KEY `profesor_id` (`profesor_id`);
+
+--
 -- Indices de la tabla `imparten`
 --
 ALTER TABLE `imparten`
@@ -196,15 +237,20 @@ ALTER TABLE `alumnos`
 ALTER TABLE `asignaturas`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT de la tabla `camb_puntuales`
+--
+ALTER TABLE `camb_puntuales`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+--
 -- AUTO_INCREMENT de la tabla `imparten`
 --
 ALTER TABLE `imparten`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `profesores`
 --
 ALTER TABLE `profesores`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `tiene_matriculadas`
 --
@@ -218,6 +264,13 @@ ALTER TABLE `tutorias`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `camb_puntuales`
+--
+ALTER TABLE `camb_puntuales`
+ADD CONSTRAINT `camb_puntuales_ibfk_1` FOREIGN KEY (`tutoria_id`) REFERENCES `tutorias` (`id`),
+ADD CONSTRAINT `camb_puntuales_ibfk_2` FOREIGN KEY (`profesor_id`) REFERENCES `profesores` (`id`);
 
 --
 -- Filtros para la tabla `imparten`

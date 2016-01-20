@@ -11,15 +11,17 @@
 				if($num == 1){
 					$userData = $this->Alumno->find('all', array('conditions'=> array('Alumno.usuarioAl =' => $this->request->data['Alumno']['usuarioAl'])));
 				    $this->Session->write('userType', $userData[0]['Alumno']['tipoUsuario']);
+					$this->Session->write('userData', $userData);
 					print_r($userData);
 				}else{
 					$this->loadModel('Profesor');
 					$num = $this->Profesor->find('count', array('conditions'=> array('Profesor.usuarioP =' => $this->request->data['Alumno']['usuarioAl'], 'Profesor.passP' => $this->request->data['Alumno'] ['passAl'])));
 					
 					if($num == 1){
+						echo 'entra';
 						$userData = $this->Profesor->find('all', array('conditions'=> array('Profesor.usuarioP =' => $this->request->data['Alumno']['usuarioAl'])));
 				    	$this->Session->write('userData', $userData);
-					 $this->Session->write('userType', $userData[0]['Profesor']['tipoUsuario']);
+					    $this->Session->write('userType', $userData[0]['Profesor']['tipoUsuario']);
 						return $this->redirect(array('controller' => 'profesores', 'action' => 'index'));
 					}else{
 						$this->Flash->set('usuario o contraseña incorrecta');

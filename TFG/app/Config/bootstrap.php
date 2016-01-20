@@ -112,7 +112,8 @@ CakeLog::config('error', array(
 
 Inflector::rules('singular', [
   '/(.*)res$/i' => '\1r', 
-  '/(.*)nes$/i' => '\1n', 
+  '/(.*)nes$/i' => '\1n',
+  '/(.*)en$/i' => '\1e', 
   '/(.*)des$/i' => '\1d', 
   '/(.*)ses$/i' => '\1s', 
   '/(.*)les$/i' => '\1l'
@@ -120,6 +121,7 @@ Inflector::rules('singular', [
  
 Inflector::rules('plural', [
   '/(.*)r$/i' => '\1res', 
+  '/(.*)e$/i' => '\1en', 
   '/(.*)n$/i' => '\1nes', 
   '/(.*)d$/i' => '\1des', 
   '/(.*)s$/i' => '\1ses', 
