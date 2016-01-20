@@ -39,6 +39,8 @@
 		 public function change(){
 		 	if($this->request->is('post')){
 		 		print_r($this->request->data);
+		 		$this->set('id_tutoria',$this->request->data['Tutoria']['tutoria']);
+		 		$this->set('id_profesor',$this->request->data['Tutoria']['profesor']);
 		 	}
 		 }
 	}

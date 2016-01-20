@@ -22,6 +22,7 @@
 				<li> <?php echo $valor['Asignatura']['nombreA'] . ' ' .$valor['Profesor']['nombreP'] . ' ' .$valor['Profesor']['apellidosP'] . ' ' . $valor['Tutoria']['dia'] . ' de ' . $valor['Tutoria']['hora_inicio']. ':' . $min_inicio. ' a ' . $valor['Tutoria']['hora_fin']. ':' . $min_fin. '  '; 
 					echo $this->Form->create('Tutoria',array('url' => array('controller' => 'tutorias', 'action' => 'change')));
 				    echo $this->Form->input('tutoria',array('type'=>'hidden','value' => $valor['Tutoria']['id']));
+					echo $this->Form->input('profesor',array('type'=>'hidden','value' => $valor['Profesor']['id']));
 					echo $this->Form->end('cambio puntual');
 					?>
 				</li>
@@ -32,6 +33,7 @@
 			<li> <?php echo $valor['Asignatura']['nombreA'] . ' ' .$valor['Profesor']['nombreP'] . ' ' .$valor['Profesor']['apellidosP'] . ' ' . $valor['Tutoria']['dia'] . ' de ' . $valor['Tutoria']['hora_inicio']. ':' . $min_inicio. ' a ' . $valor['Tutoria']['hora_fin']. ':' . $min_fin. '  '; 
 					echo $this->Form->create('Tutoria',array('url' => array('controller' => 'tutorias', 'action' => 'change')));
 				    echo $this->Form->input('tutoria',array('type'=>'hidden','value' => $valor['Tutoria']['id']));
+				    echo $this->Form->input('profesor',array('type'=>'hidden','value' => $valor['Profesor']['id']));
 					echo $this->Form->end('cambio puntual');
 					?>
 				</li>

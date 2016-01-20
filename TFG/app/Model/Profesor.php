@@ -31,5 +31,10 @@
 				)
 			)
 		);
+		public $hasMany = array(
+        'Asignatura' => array(
+            'className' => 'Asignatura',
+        )
+    );
 	}
 ?>
