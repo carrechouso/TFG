@@ -21,10 +21,33 @@
 		 	}
 		}
 
-		public function index() {
+		public function index() {}
 
+		public function listarProfesores(){
+			
+			if ($this->request->is('get')){
+				$this->set('profesores', $this->Profesor->find('all'));
+			}
 		}
 
+		
+		public function datosProfesor(){
+
+			if($this->request->is('get')){
+				//echo $this->params['url']['profesor_id'];
+				$this->set('nombreP', $this->params['url']['nombreP']);
+				$this->set('apellidosP', $this->params['url']['apellidosP']);
+				$this->set('data', $this->Profesor->getDatosProfesor($this->params['url']['profesor_id']));
+			}
+		}
+		
+
+		public function datosTodosProfesores(){
+
+			if($this->request->is('get')){
+				$this->set('data', $this->Profesor->find('all'));
+			}
+		}
 	}
 
 ?>

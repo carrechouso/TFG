@@ -37,7 +37,7 @@
 		);
 		
 		public function getData(){
-			$this->CambPuntual->query("select * from tutotias t, profesores p, asignaturas a where p.id = t.profesor_id and a.id = t.tutoria_id");
+			return $this->query("SELECT a.nombreA, c.despacho, c.dia, c.profesor_id, c.hora_inicio, c.hora_fin, c.minuto_inicio, c.minuto_fin, p.nombreP, p.apellidosP FROM camb_puntuales c, tutorias t, profesores p, asignaturas a WHERE  c.tutoria_id = t.id and p.id = c.profesor_id and t.profesor_id = p.id and t.asignatura_id = a.id");
 		}
 
 		 public $belongsTo = array(

@@ -2,6 +2,12 @@
 	
 	class AsignaturasController extends AppController {
 
+		public function index(){
+			if($this->request->is('get')){
+				$this->set('asignaturas', $this->Asignatura->find('all'));
+			}
+		}
+
 		 public function add(){
 
 		 	if($this->request->is('post')){

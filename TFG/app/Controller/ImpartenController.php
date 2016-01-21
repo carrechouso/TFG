@@ -27,6 +27,7 @@
 		 		echo 'hola';
 
 		 		print_r($this->request->data);
+		 		$this->loadModel('Imparte');
 		 		$num = $this->Imparte->find('count', array('conditions' => array('Imparte.profesor_id =' => $this->request->data['Imparte']['profesor_id'], 'Imparte.asignatura_id =' => $this->request->data['Imparte']['asignatura_id'])));
 		 		
 		 		if($num == 1){
@@ -34,8 +35,8 @@
 		 		}else{
 		 			$this->Imparte->save($this->request->data);
 					$this->Flash->success('Dado de alta correctamente en la asignatura');
-					//$log = $this->Imparte->getDataSource()->getLog(false, false);
-					//debug($log);
+					$log = $this->Imparte->getDataSource()->getLog(false, false);
+					debug($log);
 					return $this->redirect(array('controller' => 'Imparten', 'action' => 'index'));		
 		 			
 		 		}

@@ -15,16 +15,7 @@
 			)
 		);
 		
-		public $hasAndBelongsToMany = array(
-        	'Profesor' => array(
-            	'className' => 'Profesor',
-            	'foreignKey' => 'profesor_id'
-        	),
-        	'Asignatura' => array(
-            	'className' => 'Asignatura',
-            	'foreignKey' => 'asignatura_id'
-        	)
-    	);
+		
 		 function getDatos(){
 			return $this->query("SELECT * FROM asignaturas a, profesores p, imparten i WHERE a.id = i.asignatura_id AND  p.id = i.profesor_id");
 		}

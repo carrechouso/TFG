@@ -3,8 +3,10 @@
 <h3> usuario correcto</h3>
 
 <?php 
+
 	$userData = $this->Session->read('userData');
 	$userType = $this->Session->read('userType');
+
 	echo 'tipoUsuario:' . $userType;
 	?>
 	</br></br>
@@ -25,7 +27,27 @@
 		?></br>-->
 		<?php
 			echo $this->Html->link("Asignaturas  y profesores",array('controller' => 'imparten', 'action' => 'index'));
-	
+		?>
+		</br>
+		<?php
+			echo $this->Html->link("Lista de cambios puntuales mis tutorías",array('controller' => 'cambPuntuales', 'action' => 'index'));
+			?>
+		</br>
+		<?php
+			echo $this->Html->link("lista de profesores", array('controller' => 'profesores', 'action' => 'datosTodosProfesores'));
+
+
+	?>
+	<?php
 	}
+
+		?>
+		</br>
+		<?php
+		echo $this->Html->link("Profesores y tutorias", array('controller' => 'Profesores', 'action' => 'listarProfesores'));
+		?>
+		</br>
+		<?php
+			echo $this->Html->link("Lista de asignaturas",array('controller' => 'asignaturas', 'action' => 'index'));
 ?>
 

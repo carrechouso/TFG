@@ -5,9 +5,10 @@
 		 public function index(){
 
 			if($this->request->is('get')){
-				$data = $this->CambPuntual->find('all');
-				//$data = $this->CambPuntual->getData();
-				$this->set('tutorias', $data);
+							
+				$this->set('tutorias', $this->CambPuntual->getData());
+				$log = $this->CambPuntual->getDataSource()->getLog(false, false);
+				debug($log);			
 			}
 		}
 	

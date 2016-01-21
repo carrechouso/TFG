@@ -7,7 +7,7 @@ $(function() {
 <?php 
 
 
-	echo $id_tutoria. ' aa'. $id_profesor;
+	
 	echo $this->Form->create('CambPuntual', array('url' => array('controller' => 'camb_Puntuales', 'action' => 'add')));
 	echo $this->Form->input('dia', array('id'=>'datepicker','type'=>'text', 'label' => 'Nueva fecha de la tutoría'));
 	echo $this->Form->input('tutoria_id', array('type' => 'hidden', 'value' => $id_tutoria));
