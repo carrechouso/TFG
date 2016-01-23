@@ -49,5 +49,9 @@
 		</br>
 		<?php
 			echo $this->Html->link("Lista de asignaturas",array('controller' => 'asignaturas', 'action' => 'index'));
+		?>
+		</br>
+		<?php
+			echo $this->Html->link("Descargar calendario de tutorías",array('controller' => 'asignaturas', 'action' => 'generarCalendario'));
 ?>
 
