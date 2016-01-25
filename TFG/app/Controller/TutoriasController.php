@@ -98,7 +98,7 @@
 			 					//print_r( $row );
 			 					
 			 					for($j = 0; $j < $numDias; $j++){
-			 						//echo $j;
+			 						
 			 						$fechaIn->add(new DateInterval('P1D'));
 									$fechaString = $fechaIn->format('Y-m-d');
 									$result = date('w', strtotime($fechaString));
@@ -141,9 +141,9 @@
 												   "SUMMARY:" . htmlspecialchars($row['Asignatura']['nombreA']) . $eol .
 												   "DTSTART;TZID=Europe/Madrid:" . $vstart . $eol .
 												   "END:VEVENT" . $eol;	
-												   	echo 'no cambio';
+												 
 				 						}else{
-				 							echo 'cambio';
+				 							
 				 							$cambios = $this->CambPuntual->find('all', 
 									  				  array('conditions' => array('CambPuntual.diaCambio =' => $fechaString, 
 									  				  							  'CambPuntual.tutoria_id' => $row['Tutoria']['id'],
@@ -194,18 +194,14 @@
 		 			$filename="Event-Tutorias.ics";
 					// Set the headers
 				   header( "Content-Type: text/calendar; charset=UTF-8");
-				    header('Content-Disposition: attachment; filename=' . $filename);
-
+				   header('Content-Disposition: attachment; filename=' . $filename);
+				   header('Content-Length: ' . strlen($load));
+				   header('Connection: close');
 				    // Dump load
 				    echo $load;
-		 			//print_r($this->Tutoria->find('all', array('conditions' =>('Tutoria.id = 7'))));
-		 			//print_r($this->Tutoria->findAllById(7));
-
-//********************************************************************************************************************
-		 			//generar o calendario colleando os datos das tutorias e dos profesores
-		 			//mirar de ofrecer tamen os distintos profesores pondo nome do prfesor no calendario ou por separado
-		 			//revisar o inicio e fin dos cuatrimestres creando tabla ou algo
-		 			//pedir duración do calendario a crear
+				    exit;
+		 			
+		 			// duracion cuatrimestre controlar?
 		 		}
 						 	
 		 	}
