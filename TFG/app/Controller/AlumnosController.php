@@ -49,6 +49,12 @@
 		 		}
 		 	}
 		}
+		
+
+		public function logout(){
+			$this->Session->destroy();
+			return $this->redirect(array('controller' => 'pages', 'action' => 'home'));	
+		}
 	}
 
 ?>

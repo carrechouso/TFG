@@ -42,7 +42,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
 		</div>
 		<div id="content">
-
+			<?php if(  $_SERVER['REQUEST_URI'] != "/TFG/" &&  $_SERVER['REQUEST_URI'] != "/TFG/pages/home"){
+				echo $this->Form->create('Alumno', array('url' => array('controller' => 'alumnos', 'action' => 'logout')));
+				echo $this->Form->end('cerrar sesión');
+			
+			}?>
 			<?php echo $this->Flash->render(); ?>
 
 			<?php echo $this->fetch('content'); ?>
