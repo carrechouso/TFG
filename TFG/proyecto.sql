@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-01-2016 a las 22:15:36
+-- Tiempo de generación: 25-01-2016 a las 00:56:59
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
   `passAl` varchar(30) NOT NULL,
   `usuarioAl` varchar(30) NOT NULL,
   `tipoUsuario` enum('admin','profesor','alumno','') NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `alumnos`
@@ -42,7 +42,8 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
 INSERT INTO `alumnos` (`id`, `nombreAl`, `apellidosAl`, `passAl`, `usuarioAl`, `tipoUsuario`) VALUES
 (9, 'a', 'a', 'a2', 'a', 'alumno'),
 (11, 'c', 'c', 'c', 'c', 'admin'),
-(12, 'n', 'n', 'n', 'n', 'alumno');
+(12, 'n', 'n', 'n', 'n', 'alumno'),
+(13, 'u', 'u', 'u', 'u', 'alumno');
 
 -- --------------------------------------------------------
 
@@ -56,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `asignaturas` (
   `creditos` int(10) unsigned DEFAULT NULL,
   `cuatrimestre` enum('1','2') NOT NULL,
   `codigoAsignatura` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `asignaturas`
@@ -64,7 +65,8 @@ CREATE TABLE IF NOT EXISTS `asignaturas` (
 
 INSERT INTO `asignaturas` (`id`, `nombreA`, `creditos`, `cuatrimestre`, `codigoAsignatura`) VALUES
 (1, 'tsw', 6, '2', 'tsw_code'),
-(2, 'dai', 6, '2', 'dai_code');
+(2, 'dai', 6, '2', 'dai_code'),
+(3, 'cda', 6, '2', 'cda_code');
 
 -- --------------------------------------------------------
 
@@ -77,21 +79,20 @@ CREATE TABLE IF NOT EXISTS `camb_puntuales` (
   `tutoria_id` int(10) unsigned DEFAULT NULL,
   `profesor_id` int(10) unsigned DEFAULT NULL,
   `dia` date DEFAULT NULL,
+  `diaCambio` date NOT NULL,
   `hora_inicio` int(11) DEFAULT NULL,
   `hora_fin` int(11) DEFAULT NULL,
   `despacho` int(10) DEFAULT NULL,
   `minuto_inicio` int(11) NOT NULL,
   `minuto_fin` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `camb_puntuales`
 --
 
-INSERT INTO `camb_puntuales` (`id`, `tutoria_id`, `profesor_id`, `dia`, `hora_inicio`, `hora_fin`, `despacho`, `minuto_inicio`, `minuto_fin`) VALUES
-(24, 3, 7, '2016-01-15', 10, 12, 2, 0, 0),
-(25, 3, 7, '0000-00-00', 10, 12, 2, 0, 0),
-(26, 5, 8, '2016-01-14', 10, 12, 12, 0, 0);
+INSERT INTO `camb_puntuales` (`id`, `tutoria_id`, `profesor_id`, `dia`, `diaCambio`, `hora_inicio`, `hora_fin`, `despacho`, `minuto_inicio`, `minuto_fin`) VALUES
+(1, 5, 8, '2016-01-26', '2016-01-22', 10, 12, 78, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -103,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `imparten` (
   `id` int(10) unsigned NOT NULL,
   `asignatura_id` int(10) unsigned DEFAULT NULL,
   `profesor_id` int(10) unsigned DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `imparten`
@@ -111,7 +112,8 @@ CREATE TABLE IF NOT EXISTS `imparten` (
 
 INSERT INTO `imparten` (`id`, `asignatura_id`, `profesor_id`) VALUES
 (2, 2, 8),
-(3, 1, 8);
+(3, 1, 8),
+(6, 3, 8);
 
 -- --------------------------------------------------------
 
@@ -126,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `profesores` (
   `tipoUsuario` enum('admin','alumno','profesor','') NOT NULL,
   `usuarioP` varchar(50) NOT NULL,
   `passP` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `profesores`
@@ -135,7 +137,8 @@ CREATE TABLE IF NOT EXISTS `profesores` (
 INSERT INTO `profesores` (`id`, `nombreP`, `apellidosP`, `tipoUsuario`, `usuarioP`, `passP`) VALUES
 (7, 'miguel ', 'reboiro jato', 'profesor', 'jato', 'jato'),
 (8, 'daniel', 'gonzalez peÃ±a', 'profesor', 'dani', 'dani'),
-(9, 'b', 'b', 'profesor', 'b', 'b');
+(9, 'b', 'b', 'profesor', 'b', 'b'),
+(10, 'fran', 'fran', 'profesor', 'fran', 'fran');
 
 -- --------------------------------------------------------
 
@@ -165,16 +168,15 @@ CREATE TABLE IF NOT EXISTS `tutorias` (
   `despacho` int(10) DEFAULT NULL,
   `minuto_inicio` int(11) NOT NULL,
   `minuto_fin` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `tutorias`
 --
 
 INSERT INTO `tutorias` (`id`, `asignatura_id`, `profesor_id`, `dia`, `hora_inicio`, `hora_fin`, `despacho`, `minuto_inicio`, `minuto_fin`) VALUES
-(3, 1, 7, 'martes', 9, 14, 31, 0, 30),
-(4, 1, 7, 'lunes', 14, 15, 31, 0, 30),
-(5, 2, 8, 'viernes', 13, 15, 31, 0, 0);
+(5, 2, 8, 'viernes', 13, 15, 31, 0, 0),
+(7, 3, 8, 'lunes', 23, 10, 56, 0, 0);
 
 --
 -- Índices para tablas volcadas
@@ -230,27 +232,27 @@ ALTER TABLE `tutorias`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `asignaturas`
 --
 ALTER TABLE `asignaturas`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `camb_puntuales`
 --
 ALTER TABLE `camb_puntuales`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `imparten`
 --
 ALTER TABLE `imparten`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `profesores`
 --
 ALTER TABLE `profesores`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `tiene_matriculadas`
 --
@@ -260,7 +262,7 @@ ALTER TABLE `tiene_matriculadas`
 -- AUTO_INCREMENT de la tabla `tutorias`
 --
 ALTER TABLE `tutorias`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- Restricciones para tablas volcadas
 --

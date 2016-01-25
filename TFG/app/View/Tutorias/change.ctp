@@ -3,6 +3,10 @@
 $(function() {
       $("#datepicker").datepicker();
 });
+
+$(function() {
+      $("#datepicker2").datepicker();
+});
 </script>
 <?php 
 
@@ -10,6 +14,7 @@ $(function() {
 	
 	echo $this->Form->create('CambPuntual', array('url' => array('controller' => 'camb_Puntuales', 'action' => 'add')));
 	echo $this->Form->input('dia', array('id'=>'datepicker','type'=>'text', 'label' => 'Nueva fecha de la tutoría'));
+	echo $this->Form->input('diaCambio', array('id'=>'datepicker2','type'=>'text', 'label' => 'Fecha cambiada la tutoría'));
 	echo $this->Form->input('tutoria_id', array('type' => 'hidden', 'value' => $id_tutoria));
 	echo $this->Form->input('profesor_id', array('type' => 'hidden', 'value' => $id_profesor));
 	echo $this->Form->hour('hora_inicio', 'true',  array('default' => '10'));

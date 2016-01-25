@@ -9,6 +9,9 @@
 			
 			$fecha =  explode("-", $valor['c']['dia']);
 			$dia = $fecha[2] . '/' . $fecha[1] . '/' . $fecha[0];
+
+			$fechaVieja =  explode("-", $valor['c']['diaCambio']);
+			$diaViejo = $fechaVieja[2] . '/' . $fechaVieja[1] . '/' . $fechaVieja[0];
 			
 			$min_inicio = $valor['c']['minuto_inicio'];
 			$min_fin = $valor['c']['minuto_fin'];
@@ -22,7 +25,7 @@
 				
 				if($valor['c']['profesor_id'] == $userData[0]['Profesor']['id']){
 				?>
-					<li> <?php echo $valor['p']['nombreP'] . ' ' .$valor['p']['apellidosP'] . ' día ' .$dia . ' tutorías de ' . $valor['a']['nombreA'] . ' son desde las '. $valor['c']['hora_inicio'] . ':' . $min_inicio. ' hasta las ' . $valor['c']['hora_fin'] . ':' . $min_fin; 
+					<li> <?php echo $valor['p']['nombreP'] . ' ' .$valor['p']['apellidosP'] . ' día ' .$dia . ' tutorías de ' . $valor['a']['nombreA'] . ' son desde las '. $valor['c']['hora_inicio'] . ':' . $min_inicio. ' hasta las ' . $valor['c']['hora_fin'] . ':' . $min_fin . "\n\r" . 'La tutoría sustituida era el día ' . $diaViejo ;
 						?>
 					</li>
 					<?php 

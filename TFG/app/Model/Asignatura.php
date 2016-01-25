@@ -24,6 +24,16 @@
 					'rule' => array('notBlank'),
 					'message' => 'Introduzca un código de asignatura'
 				)
+			),'fechaInicio' => array(
+				'required' => array(
+					'rule' => array('notBlank'),
+					'message' => 'Introduzca un código de asignatura'
+				)
+			),'fechaFin' => array(
+				'required' => array(
+					'rule' => array('notBlank'),
+					'message' => 'Introduzca un código de asignatura'
+				)
 			)
 		);
 	}

@@ -17,12 +17,17 @@
 		 	if($this->request->is('post')){
 		 		print_r($this->request->data);	
 		 		$fecha = explode("/",$this->request->data['CambPuntual']['dia']);
-				$dia = $fecha[2] . '/' . $fecha[0] . '/' . $fecha[1];
+				$diaNuevo = $fecha[2] . '/' . $fecha[0] . '/' . $fecha[1];
+				$fecha = explode("/",$this->request->data['CambPuntual']['diaCambio']);
+				$diaViejo = $fecha[2] . '/' . $fecha[0] . '/' . $fecha[1];
 				$num = $this->CambPuntual->find('count', array('conditions' => array( 
+					
+
 					'CambPuntual.tutoria_id =' => $this->request->data['CambPuntual']['tutoria_id'],
 					'CambPuntual.hora_inicio =' => $this->request->data['CambPuntual']['hora_inicio']['hour'],
 					'CambPuntual.profesor_id =' => $this->request->data['CambPuntual']['profesor_id'],
-					'CambPuntual.dia =' => $dia,
+					'CambPuntual.dia =' => $diaNuevo,
+					'CambPuntual.diaCambio =' => $diaViejo,
 					'CambPuntual.despacho =' => $this->request->data['CambPuntual']['despacho'],
 					'CambPuntual.hora_fin =' => $this->request->data['CambPuntual']['hora_fin']['hour'],
 					'CambPuntual.minuto_inicio =' => $this->request->data['CambPuntual']['minuto_inicio']['min'],
@@ -32,7 +37,8 @@
 			 		if($this->CambPuntual->validates()){
 						$save = array('tutoria_id' => $this->request->data['CambPuntual']['tutoria_id'], 
 							'profesor_id' => $this->request->data['CambPuntual']['profesor_id'], 
-							'dia' => $dia, 
+							'dia' => $diaNuevo, 
+							'diaCambio' => $diaViejo, 
 							'despacho' => $this->request->data['CambPuntual']['despacho'], 
 							'hora_inicio' => $this->request->data['CambPuntual']['hora_inicio']['hour'], 
 							'hora_fin' => $this->request->data['CambPuntual']['hora_fin']['hour'], 
