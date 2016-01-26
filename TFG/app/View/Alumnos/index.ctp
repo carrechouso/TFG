@@ -35,7 +35,10 @@
 		</br>
 		<?php
 			echo $this->Html->link("lista de profesores", array('controller' => 'profesores', 'action' => 'datosTodosProfesores'));
-
+			?>
+		</br>
+		<?php
+			echo $this->Html->link("Gestionar NIU de alumnos", array('controller' => 'niukeys', 'action' => 'index'));
 
 	?>
 	<?php

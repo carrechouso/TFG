@@ -29,6 +29,11 @@
 					'rule' => array('notBlank'),
 					'message' => 'Introduzca la contraseña'
 				)
+			),'niu' => array(
+				'required' => array(
+					'rule' => array('notBlank'),
+					'message' => 'El NIU debe contener 12 dígitos'
+				)
 			)
 		);
 	}

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-01-2016 a las 00:56:59
+-- Tiempo de generación: 26-01-2016 a las 22:31:34
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -32,18 +32,19 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
   `apellidosAl` varchar(50) DEFAULT NULL,
   `passAl` varchar(30) NOT NULL,
   `usuarioAl` varchar(30) NOT NULL,
-  `tipoUsuario` enum('admin','profesor','alumno','') NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+  `tipoUsuario` enum('admin','profesor','alumno','') NOT NULL,
+  `niu` varchar(12) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `alumnos`
 --
 
-INSERT INTO `alumnos` (`id`, `nombreAl`, `apellidosAl`, `passAl`, `usuarioAl`, `tipoUsuario`) VALUES
-(9, 'a', 'a', 'a2', 'a', 'alumno'),
-(11, 'c', 'c', 'c', 'c', 'admin'),
-(12, 'n', 'n', 'n', 'n', 'alumno'),
-(13, 'u', 'u', 'u', 'u', 'alumno');
+INSERT INTO `alumnos` (`id`, `nombreAl`, `apellidosAl`, `passAl`, `usuarioAl`, `tipoUsuario`, `niu`) VALUES
+(9, 'a', 'a', 'a2', 'a', 'alumno', '111111111111'),
+(11, 'c', 'c', 'c', 'c', 'admin', '222222222222'),
+(12, 'n', 'n', 'n', 'n', 'alumno', '333333333333'),
+(13, 'u', 'u', 'u', 'u', 'alumno', '444444444444');
 
 -- --------------------------------------------------------
 
@@ -114,6 +115,24 @@ INSERT INTO `imparten` (`id`, `asignatura_id`, `profesor_id`) VALUES
 (2, 2, 8),
 (3, 1, 8),
 (6, 3, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `niukeys`
+--
+
+CREATE TABLE IF NOT EXISTS `niukeys` (
+  `id` int(10) NOT NULL,
+  `niu` varchar(12) COLLATE latin1_spanish_ci DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `niukeys`
+--
+
+INSERT INTO `niukeys` (`id`, `niu`) VALUES
+(1, '111111111111');
 
 -- --------------------------------------------------------
 
@@ -207,6 +226,12 @@ ALTER TABLE `imparten`
   ADD PRIMARY KEY (`id`), ADD KEY `asignatura_id` (`asignatura_id`), ADD KEY `profesor_id` (`profesor_id`);
 
 --
+-- Indices de la tabla `niukeys`
+--
+ALTER TABLE `niukeys`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `profesores`
 --
 ALTER TABLE `profesores`
@@ -232,7 +257,7 @@ ALTER TABLE `tutorias`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `asignaturas`
 --
@@ -248,6 +273,11 @@ ALTER TABLE `camb_puntuales`
 --
 ALTER TABLE `imparten`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT de la tabla `niukeys`
+--
+ALTER TABLE `niukeys`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `profesores`
 --

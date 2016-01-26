@@ -42,9 +42,11 @@
 		 			if($this->request->data['Alumno']['passAl'] != $this->request->data['Alumno']['passAl_2']){
 		 			  $this->Flash->set('las contraseñas no son iguales');
 		 			}else{
-		 				$this->Alumno->save($this->request->data);
-					    $this->Flash->success('Alumno registrado correctamente');
-						return $this->redirect(array('controller' => 'pages', 'action' => 'home'));		
+		 				if($this->Alumno->validates()){
+			 				$this->Alumno->save($this->request->data);
+						    $this->Flash->success('Alumno registrado correctamente');
+							return $this->redirect(array('controller' => 'pages', 'action' => 'home'));	
+						}	
 		 			}
 		 		}
 		 	}
