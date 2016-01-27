@@ -6,7 +6,7 @@
 	}
 
 	public function getNonValidateUsers(){
-		return $this->query("select a.nombreAl, a.apellidosAl, a.niu from niukeys n, alumnos a where a.niu != (select niu from niukeys )");
+		return $this->query("SELECT a.niu, a.nombreAl, a.apellidosAl FROM alumnos AS a LEFT OUTER JOIN niukeys AS n ON a.niu = n.niu WHERE n.niu IS NULL");
 	}
 }
 ?>

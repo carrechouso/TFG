@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-01-2016 a las 22:31:34
+-- Tiempo de generación: 27-01-2016 a las 13:31:51
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
   `usuarioAl` varchar(30) NOT NULL,
   `tipoUsuario` enum('admin','profesor','alumno','') NOT NULL,
   `niu` varchar(12) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `alumnos`
@@ -125,14 +125,14 @@ INSERT INTO `imparten` (`id`, `asignatura_id`, `profesor_id`) VALUES
 CREATE TABLE IF NOT EXISTS `niukeys` (
   `id` int(10) NOT NULL,
   `niu` varchar(12) COLLATE latin1_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `niukeys`
 --
 
 INSERT INTO `niukeys` (`id`, `niu`) VALUES
-(1, '111111111111');
+(2, '111111111111');
 
 -- --------------------------------------------------------
 
@@ -257,7 +257,7 @@ ALTER TABLE `tutorias`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `asignaturas`
 --
@@ -277,7 +277,7 @@ ALTER TABLE `imparten`
 -- AUTO_INCREMENT de la tabla `niukeys`
 --
 ALTER TABLE `niukeys`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `profesores`
 --
