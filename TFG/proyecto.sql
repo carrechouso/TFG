@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-01-2016 a las 13:31:51
+-- Tiempo de generación: 29-01-2016 a las 21:00:19
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -119,13 +119,35 @@ INSERT INTO `imparten` (`id`, `asignatura_id`, `profesor_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `mensajes`
+--
+
+CREATE TABLE IF NOT EXISTS `mensajes` (
+  `id` int(10) NOT NULL,
+  `emisor_id` int(10) unsigned DEFAULT NULL,
+  `receptor_id` int(10) unsigned DEFAULT NULL,
+  `mensaje` text COLLATE latin1_spanish_ci NOT NULL,
+  `fecha_mensaje` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `mensajes`
+--
+
+INSERT INTO `mensajes` (`id`, `emisor_id`, `receptor_id`, `mensaje`, `fecha_mensaje`) VALUES
+(1, 11, 8, 'mensaje 1 ', '2016-01-29 19:00:48'),
+(2, 11, 8, 'pipas \r\n', '2016-01-29 19:59:59');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `niukeys`
 --
 
 CREATE TABLE IF NOT EXISTS `niukeys` (
   `id` int(10) NOT NULL,
   `niu` varchar(12) COLLATE latin1_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `niukeys`
@@ -226,6 +248,12 @@ ALTER TABLE `imparten`
   ADD PRIMARY KEY (`id`), ADD KEY `asignatura_id` (`asignatura_id`), ADD KEY `profesor_id` (`profesor_id`);
 
 --
+-- Indices de la tabla `mensajes`
+--
+ALTER TABLE `mensajes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `niukeys`
 --
 ALTER TABLE `niukeys`
@@ -274,10 +302,15 @@ ALTER TABLE `camb_puntuales`
 ALTER TABLE `imparten`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT de la tabla `mensajes`
+--
+ALTER TABLE `mensajes`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `niukeys`
 --
 ALTER TABLE `niukeys`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `profesores`
 --

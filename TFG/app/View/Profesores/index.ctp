@@ -17,4 +17,8 @@
 		</br>
 		<?php
 			echo $this->Html->link("Lista de asignaturas",array('controller' => 'asignaturas', 'action' => 'index'));
+		?>
+		</br>
+		<?php
+			echo $this->Html->link("Lista de Mensajes",array('controller' => 'mensajes', 'action' => 'index'));
 	?>

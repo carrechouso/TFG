@@ -56,5 +56,9 @@
 		</br>
 		<?php
 			echo $this->Html->link("Descargar calendario de tutorías",array('controller' => 'tutorias', 'action' => 'generarCalendario'));
+		?>
+		</br>
+		<?php
+			echo $this->Html->link("Lista de Mensajes",array('controller' => 'mensajes', 'action' => 'index'));
 ?>
 
