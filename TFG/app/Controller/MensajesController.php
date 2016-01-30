@@ -29,8 +29,23 @@
 		 		$this->set('emisor_id', $this->request->query['emisor_id']);
 		 	}
 		 	if($this->request->is('post')){
-		 		$this->Mensaje->save($this->request->data);
-		 		$this->Flash->success('mensaje enviado');
+		 		$this->loadModel('Niukey');
+		 		$userData = $this->Session->read('userData');
+		 		$userType = $this->Session->read('userType');
+		 		if($userType == 'alumno'){
+		 			echo 'alumno';
+		 			$num = $this->Niukey->find('count', array('conditions' => array('Niukey.niu = ' => $userData[0]['Alumno']['niu'])));
+		 			if($num == 1){
+		 				$this->Mensaje->save($this->request->data);
+		 				$this->Flash->success('mensaje enviado');
+		 			}else{
+		 				$this->Flash->set('Tu NIU aún no ha sido validado. No podrás mandar mensajes hasta que haya sido validado');
+		 			}
+		 		}else{
+		 			$this->Mensaje->save($this->request->data);
+		 			$this->Flash->success('mensaje enviado');
+		 		}
+		 		
 		 		$this->redirect(array('controller' => 'mensajes', 'action' => 'index'));
 		 	}
 		 }

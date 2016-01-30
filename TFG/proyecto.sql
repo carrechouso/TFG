@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-01-2016 a las 21:00:19
+-- Tiempo de generación: 30-01-2016 a las 19:40:37
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `receptor_id` int(10) unsigned DEFAULT NULL,
   `mensaje` text COLLATE latin1_spanish_ci NOT NULL,
   `fecha_mensaje` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `mensajes`
@@ -136,7 +136,14 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
 
 INSERT INTO `mensajes` (`id`, `emisor_id`, `receptor_id`, `mensaje`, `fecha_mensaje`) VALUES
 (1, 11, 8, 'mensaje 1 ', '2016-01-29 19:00:48'),
-(2, 11, 8, 'pipas \r\n', '2016-01-29 19:59:59');
+(2, 11, 8, 'pipas \r\n', '2016-01-29 19:59:59'),
+(3, 8, 11, 'vale pues 2', '2016-01-30 17:05:26'),
+(6, 11, 8, 'sip.. funciona o de validar', '2016-01-30 17:26:08'),
+(7, 12, 8, 'mensaje validado', '2016-01-30 17:35:16'),
+(8, 12, 8, 'mensaje validado 2', '2016-01-30 17:40:01'),
+(9, 12, 8, 'mensaje validao 2\r\n', '2016-01-30 17:40:16'),
+(10, 12, 8, 'mensaje validado 2\r\n', '2016-01-30 17:40:42'),
+(11, 11, 8, 'hola mensaje respondido', '2016-01-30 17:42:38');
 
 -- --------------------------------------------------------
 
@@ -147,14 +154,15 @@ INSERT INTO `mensajes` (`id`, `emisor_id`, `receptor_id`, `mensaje`, `fecha_mens
 CREATE TABLE IF NOT EXISTS `niukeys` (
   `id` int(10) NOT NULL,
   `niu` varchar(12) COLLATE latin1_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `niukeys`
 --
 
 INSERT INTO `niukeys` (`id`, `niu`) VALUES
-(2, '111111111111');
+(2, '111111111111'),
+(3, '333333333333');
 
 -- --------------------------------------------------------
 
@@ -305,12 +313,12 @@ ALTER TABLE `imparten`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `niukeys`
 --
 ALTER TABLE `niukeys`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `profesores`
 --

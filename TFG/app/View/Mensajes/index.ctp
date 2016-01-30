@@ -8,7 +8,7 @@
 			<?php
 				if($mensaje['m']['emisor_id'] == $userId){
 					if($userType == 'admin' || $userType == 'alumno'){
-					
+						
 						echo 'Emisor: ' . $mensaje['a']['nombreAl'] . ' ' . $mensaje['a']['apellidosAl'];
 						?></br>
 						<?php
@@ -48,6 +48,11 @@
 						?></br>
 						<?php
 						echo 'Mensaje: ' . $mensaje['m']['mensaje'];
+						?>
+						</br>
+						<?php
+						echo 'hola';
+						echo $this->Html->link('responder mensaje', array('controller' => 'mensajes', 'action' => 'add', '?' => array('nombre' => $mensaje['p']['nombreP'] , 'apellidos' => $mensaje['p']['nombreP'], 'receptor_id' => $mensaje['m']['emisor_id'], 'emisor_id' => $mensaje['m']['receptor_id'] )));
 						?></br><br>
 						<?php
 					}else{
@@ -61,6 +66,10 @@
 						?></br>
 						<?php
 						echo 'Mensaje: ' . $mensaje['m']['mensaje'];
+						?>
+						</br>
+						<?php
+						echo $this->Html->link('responder mensaje', array('controller' => 'mensajes', 'action' => 'add', '?' => array('nombre' => $mensaje['a']['nombreAl'] , 'apellidos' => $mensaje['a']['nombreAl'], 'receptor_id' => $mensaje['m']['emisor_id'], 'emisor_id' => $mensaje['m']['receptor_id'] )));
 						?></br><br>
 						<?php
 					}
